@@ -1,0 +1,14 @@
+C:\Users\mamin\Documents\codigos_vscode\Randstad - Backend com .NET\SistemaParaEstacionamento\obj\Debug\net8.0\SistemaParaEstacionamento.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mamin\Documents\codigos_vscode\Randstad - Backend com .NET\SistemaParaEstacionamento\obj\Debug\net8.0\SistemaParaEstacionamento.AssemblyInfoInputs.cache
+C:\Users\mamin\Documents\codigos_vscode\Randstad - Backend com .NET\SistemaParaEstacionamento\obj\Debug\net8.0\SistemaParaEstacionamento.AssemblyInfo.cs
+C:\Users\mamin\Documents\codigos_vscode\Randstad - Backend com .NET\SistemaParaEstacionamento\obj\Debug\net8.0\SistemaParaEstacionamento.csproj.CoreCompileInputs.cache
+C:\Users\mamin\Documents\codigos_vscode\Randstad - Backend com .NET\SistemaParaEstacionamento\bin\Debug\net8.0\SistemaParaEstacionamento.exe
+C:\Users\mamin\Documents\codigos_vscode\Randstad - Backend com .NET\SistemaParaEstacionamento\bin\Debug\net8.0\SistemaParaEstacionamento.deps.json
+C:\Users\mamin\Documents\codigos_vscode\Randstad - Backend com .NET\SistemaParaEstacionamento\bin\Debug\net8.0\SistemaParaEstacionamento.runtimeconfig.json
+C:\Users\mamin\Documents\codigos_vscode\Randstad - Backend com .NET\SistemaParaEstacionamento\bin\Debug\net8.0\SistemaParaEstacionamento.dll
+C:\Users\mamin\Documents\codigos_vscode\Randstad - Backend com .NET\SistemaParaEstacionamento\bin\Debug\net8.0\SistemaParaEstacionamento.pdb
+C:\Users\mamin\Documents\codigos_vscode\Randstad - Backend com .NET\SistemaParaEstacionamento\obj\Debug\net8.0\SistemaParaEstacionamento.dll
+C:\Users\mamin\Documents\codigos_vscode\Randstad - Backend com .NET\SistemaParaEstacionamento\obj\Debug\net8.0\refint\SistemaParaEstacionamento.dll
+C:\Users\mamin\Documents\codigos_vscode\Randstad - Backend com .NET\SistemaParaEstacionamento\obj\Debug\net8.0\SistemaParaEstacionamento.pdb
+C:\Users\mamin\Documents\codigos_vscode\Randstad - Backend com .NET\SistemaParaEstacionamento\obj\Debug\net8.0\SistemaParaEstacionamento.genruntimeconfig.cache
+C:\Users\mamin\Documents\codigos_vscode\Randstad - Backend com .NET\SistemaParaEstacionamento\obj\Debug\net8.0\ref\SistemaParaEstacionamento.dll
