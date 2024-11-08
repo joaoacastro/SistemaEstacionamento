@@ -38,31 +38,45 @@ class Program
                         Console.WriteLine(">> 1 - CADASTRO <<");
 
                         Console.Write("Digite a placa do veículo (abc1234): ");
-                        string? placaCadastro = Console.ReadLine()?.ToUpper();
+                        string? placa = Console.ReadLine()?.ToUpper();
 
-                        Console.Write("Marca do veículo: ");
-                        string? marca = Console.ReadLine()?.ToUpper();
-
-                        Console.Write("Modelo do veículo: ");
-                        string? modelo = Console.ReadLine()?.ToUpper();
-
-                        Console.Write("Cor do veículo: ");
-                        string? cor = Console.ReadLine()?.ToUpper();
-
-                        // Validação para garantir que nenhum dos campos seja nulo ou vazio
-                        if (!string.IsNullOrWhiteSpace(placaCadastro) &&
-                            !string.IsNullOrWhiteSpace(marca) &&
-                            !string.IsNullOrWhiteSpace(modelo) &&
-                            !string.IsNullOrWhiteSpace(cor))
+                        // Verifique se a placa é nula ou vazia antes de chamar o método VerificarPlaca
+                        if (string.IsNullOrWhiteSpace(placa))
                         {
-                            estacionamento.CadastrarVeiculo(placaCadastro, marca, modelo, cor);
+                            Console.WriteLine("Placa não pode ser nula ou vazia. Tente novamente.");
                         }
                         else
                         {
-                            Console.WriteLine("");
-                            Console.WriteLine("Cadastro não efetuado! Por favor, revise as informações e tente novamente.");
+                            bool verificar = estacionamento.VerificarPlaca(placa);
+
+                            if (verificar)
+                            {
+                                Console.Write("Marca do veículo: ");
+                                string? marca = Console.ReadLine()?.ToUpper();
+
+                                Console.Write("Modelo do veículo: ");
+                                string? modelo = Console.ReadLine()?.ToUpper();
+
+                                Console.Write("Cor do veículo: ");
+                                string? cor = Console.ReadLine()?.ToUpper();
+
+                                // Validação para garantir que nenhum dos campos seja nulo ou vazio
+                                if (!string.IsNullOrWhiteSpace(placa) &&
+                                    !string.IsNullOrWhiteSpace(marca) &&
+                                    !string.IsNullOrWhiteSpace(modelo) &&
+                                    !string.IsNullOrWhiteSpace(cor))
+                                {
+                                    estacionamento.CadastrarVeiculo(placa, marca, modelo, cor);
+                                }
+                                else
+                                {
+                                    Console.WriteLine(" ");
+                                    Console.WriteLine("Cadastro não efetuado! Por favor, revise as informações e tente novamente.");
+                                }
+                            }
                         }
                         break;
+
 
                     case "2":
                         Console.WriteLine("");

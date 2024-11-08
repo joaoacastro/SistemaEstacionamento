@@ -28,6 +28,29 @@ namespace SistemaParaEstacionamento.Models
             public DateTime? HoraSaida { get; set; } = null;
         }
 
+        public bool VerificarPlaca(string placa)
+        {
+            if (veiculos.Any(v => v.Placa == placa))
+            {
+                Console.WriteLine(" ");
+                Console.WriteLine("ERRO! \n Essa placa já foi cadastrada no Sistema. \n Verifique a placa e tente novamente.");
+                return false;
+            }
+            else if (placa.Length >= 8)
+            {
+                Console.WriteLine(" ");
+                Console.WriteLine("ERRO! \n O número de caracteres excede o limite permitido. \n Verifique a placa e tente novamente.");
+                return false;
+            }
+            else if (placa.Length <= 7)
+            {
+                Console.WriteLine(" ");
+                Console.WriteLine("ERRO! \n O número de caracteres é inferior ao limite permitido. \n Verifique a placa e tente novamente.");
+                return false;
+            }
+            return true;
+        }
+
         private string FormatarPlaca(string placa)
         {
             if (placa.Length == 8 && placa[3] == '-')
@@ -35,23 +58,23 @@ namespace SistemaParaEstacionamento.Models
                 return placa;
             }
 
-            return $"{placa.Substring(0,3)}-{placa.Substring(3)}";
+            return $"{placa.Substring(0, 3)}-{placa.Substring(3)}";
         }
 
         public void CadastrarVeiculo(string placa, string marca, string modelo, string cor)
         {
-            if (veiculos.Any(v => v.Placa == placa))
-            {
-                Console.WriteLine(" ");
-                Console.WriteLine("ERRO! \n Essa placa já foi cadastrada no Sistema. \n Verifique a placa e tente novamente.");
-            }
-            else if (placa.Length >= 8)
-            {
-                Console.WriteLine(" ");
-                Console.WriteLine("ERRO! \n O número de caracteres excede o limite permitido. \n Verifique a placa e tente novamente.");
-            }
-            else
-            {
+            // if (veiculos.Any(v => v.Placa == placa))
+            // {
+            //     Console.WriteLine(" ");
+            //     Console.WriteLine("ERRO! \n Essa placa já foi cadastrada no Sistema. \n Verifique a placa e tente novamente.");
+            // }
+            // else if (placa.Length >= 8)
+            // {
+            //     Console.WriteLine(" ");
+            //     Console.WriteLine("ERRO! \n O número de caracteres excede o limite permitido. \n Verifique a placa e tente novamente.");
+            // }
+            // else
+            // {
                 var veiculo = new Veiculo
                 {
                     Placa = placa,
@@ -65,7 +88,7 @@ namespace SistemaParaEstacionamento.Models
                 Console.WriteLine(" ");
                 Console.WriteLine($"Veículo cadastrado às {veiculo.HoraEntrada}: \n Marca: {marca} \n Modelo: {modelo} \n Cor: {cor} \n Placa: {FormatarPlaca(placa)}");
             }
-        }
+        // }
 
         public void RemoverVeiculo(string placa)
         {
