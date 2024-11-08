@@ -20,15 +20,26 @@ namespace SistemaParaEstacionamento.Models
 
         private class Veiculo
         {
-            public string Placa { get; set; } = "AAA-1111";
+            public string Placa { get; set; } = "###-####";
             public string Marca { get; set; } = "MARCA";
             public string Modelo { get; set; } = "MODELO";
             public string Cor { get; set; } = "BRANCO";
             public DateTime HoraEntrada { get; set; }
             public DateTime? HoraSaida { get; set; } = null;
         }
+        private string FormatarPlaca(string placa)
+        {
+            if (placa.Length == 8 && placa[3] == '-')
+            {
+                return placa;
+            }
+
+            return $"{placa.Substring(0,3)}-{placa.Substring(3)}";
+        }
+
         public void CadastrarVeiculo(string placa, string marca, string modelo, string cor)
         {
+
             if (veiculos.Any(v => v.Placa == placa))
             {
                 Console.WriteLine(" ");
@@ -45,8 +56,9 @@ namespace SistemaParaEstacionamento.Models
                     HoraEntrada = DateTime.Now
                 };
                 veiculos.Add(veiculo);
+
                 Console.WriteLine(" ");
-                Console.WriteLine($"Veículo cadastrado às {veiculo.HoraEntrada}: \n Marca: {marca} \n Modelo: {modelo} \n Cor: {cor} \n Placa: {placa}");
+                Console.WriteLine($"Veículo cadastrado às {veiculo.HoraEntrada}: \n Marca: {marca} \n Modelo: {modelo} \n Cor: {cor} \n Placa: {FormatarPlaca(placa)}");
             }
         }
 
@@ -60,7 +72,7 @@ namespace SistemaParaEstacionamento.Models
                 decimal total = vlrInicial + (decimal)duracao.TotalHours * vlrHora;
                 veiculos.Remove(veiculo);
 
-                Console.WriteLine($"{veiculo.Marca} {veiculo.Modelo} {veiculo.Cor} | placa: {placa} removido.");
+                Console.WriteLine($"{veiculo.Marca} {veiculo.Modelo} {veiculo.Cor} | placa: {FormatarPlaca(placa)} removido.");
 
                 if (duracao.TotalHours < 1)
                 {
@@ -91,7 +103,7 @@ namespace SistemaParaEstacionamento.Models
             Console.WriteLine($"Veículos Cadastrados ({veiculos.Count}):");
             foreach (var veiculo in veiculos)
             {
-                Console.WriteLine($"Marca: {veiculo.Marca} Modelo: {veiculo.Modelo} Cor: {veiculo.Cor} Placa: {veiculo.Placa} - Entrada: {veiculo.HoraEntrada}");
+                Console.WriteLine($"Marca: {veiculo.Marca} Modelo: {veiculo.Modelo} Cor: {veiculo.Cor} Placa: {FormatarPlaca(veiculo.Placa)} - Entrada: {veiculo.HoraEntrada}");
             }
         }
 
