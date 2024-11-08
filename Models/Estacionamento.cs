@@ -72,6 +72,7 @@ namespace SistemaParaEstacionamento.Models
                 decimal total = vlrInicial + (decimal)duracao.TotalHours * vlrHora;
                 veiculos.Remove(veiculo);
 
+                Console.WriteLine(" ");
                 Console.WriteLine($"{veiculo.Marca} {veiculo.Modelo} {veiculo.Cor} | placa: {FormatarPlaca(placa)} removido.");
 
                 if (duracao.TotalHours < 1)
