@@ -27,6 +27,7 @@ namespace SistemaParaEstacionamento.Models
             public DateTime HoraEntrada { get; set; }
             public DateTime? HoraSaida { get; set; } = null;
         }
+
         private string FormatarPlaca(string placa)
         {
             if (placa.Length == 8 && placa[3] == '-')
@@ -39,11 +40,15 @@ namespace SistemaParaEstacionamento.Models
 
         public void CadastrarVeiculo(string placa, string marca, string modelo, string cor)
         {
-
             if (veiculos.Any(v => v.Placa == placa))
             {
                 Console.WriteLine(" ");
-                Console.WriteLine("ERRO! \n Essa placa já foi cadastrada no Sistema! \n Verifique a placa e tente novamente.");
+                Console.WriteLine("ERRO! \n Essa placa já foi cadastrada no Sistema. \n Verifique a placa e tente novamente.");
+            }
+            else if (placa.Length >= 8)
+            {
+                Console.WriteLine(" ");
+                Console.WriteLine("ERRO! \n O número de caracteres excede o limite permitido. \n Verifique a placa e tente novamente.");
             }
             else
             {
