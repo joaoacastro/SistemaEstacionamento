@@ -7,10 +7,12 @@ class Program
     {
         Console.WriteLine("Seja bem-vindx ao sistema de estacionamento JAC PARK");
 
-        Console.WriteLine("Digite o preço inicial R$:");
+        Console.WriteLine("Digite o preço inicial");
+        Console.Write("R$ ");
         decimal valorInicial = Convert.ToDecimal(Console.ReadLine()?.Replace('.', ',') ?? "0");
 
-        Console.WriteLine("Agora digite o valor por hora R$:");
+        Console.WriteLine("Agora digite o valor por hora");
+        Console.Write("R$ ");
         decimal valorHora = Convert.ToDecimal(Console.ReadLine()?.Replace('.', ',') ?? "0");
 
         var estacionamento = new Estacionamento(valorInicial, valorHora);
@@ -34,23 +36,23 @@ class Program
                     case "1":
                         Console.WriteLine("");
                         Console.WriteLine(">> 1 - CADASTRO <<");
-                        
-                        Console.Write("Digite a placa do veículo (ABC-1234): ");
+
+                        Console.Write("Digite a placa do veículo (abc1234): ");
                         string? placaCadastro = Console.ReadLine()?.ToUpper();
-                        
+
                         Console.Write("Marca do veículo: ");
                         string? marca = Console.ReadLine()?.ToUpper();
-                        
+
                         Console.Write("Modelo do veículo: ");
                         string? modelo = Console.ReadLine()?.ToUpper();
-                        
+
                         Console.Write("Cor do veículo: ");
                         string? cor = Console.ReadLine()?.ToUpper();
 
                         // Validação para garantir que nenhum dos campos seja nulo ou vazio
-                        if (!string.IsNullOrWhiteSpace(placaCadastro) && 
-                            !string.IsNullOrWhiteSpace(marca) && 
-                            !string.IsNullOrWhiteSpace(modelo) && 
+                        if (!string.IsNullOrWhiteSpace(placaCadastro) &&
+                            !string.IsNullOrWhiteSpace(marca) &&
+                            !string.IsNullOrWhiteSpace(modelo) &&
                             !string.IsNullOrWhiteSpace(cor))
                         {
                             estacionamento.CadastrarVeiculo(placaCadastro, marca, modelo, cor);
@@ -65,7 +67,7 @@ class Program
                     case "2":
                         Console.WriteLine("");
                         Console.WriteLine(">> 2 - REMOVER <<");
-                        Console.Write("Digite a placa do veículo que deseja remover (ABC-1234): ");
+                        Console.Write("Digite a placa do veículo que deseja remover (abc1234): ");
                         string? placaRemocao = Console.ReadLine()?.ToUpper();
                         if (!string.IsNullOrWhiteSpace(placaRemocao))
                         {
@@ -73,6 +75,7 @@ class Program
                         }
                         else
                         {
+                            Console.WriteLine(" ");
                             Console.WriteLine("Por favor, insira uma placa válida.");
                         }
                         break;

@@ -20,26 +20,34 @@ namespace SistemaParaEstacionamento.Models
 
         private class Veiculo
         {
-            public string Placa { get; set;} = "AAA-1111";
-            public string Marca {get; set;} = "MARCA";
-            public string Modelo {get; set;} = "MODELO";
-            public string Cor {get; set;} = "BRANCO";
-            public DateTime HoraEntrada { get; set;}
-            public DateTime? HoraSaida {get; set;} = null;
+            public string Placa { get; set; } = "AAA-1111";
+            public string Marca { get; set; } = "MARCA";
+            public string Modelo { get; set; } = "MODELO";
+            public string Cor { get; set; } = "BRANCO";
+            public DateTime HoraEntrada { get; set; }
+            public DateTime? HoraSaida { get; set; } = null;
         }
         public void CadastrarVeiculo(string placa, string marca, string modelo, string cor)
         {
-            var veiculo = new Veiculo
+            if (veiculos.Any(v => v.Placa == placa))
             {
-                Placa = placa,
-                Marca = marca,
-                Modelo = modelo,
-                Cor = cor,
-                HoraEntrada = DateTime.Now
-            };
-            veiculos.Add(veiculo);
-            Console.WriteLine(" ");
-            Console.WriteLine($"Veículo cadastrado às {veiculo.HoraEntrada}: \n Marca: {marca} \n Modelo: {modelo} \n Cor: {cor} \n Placa: {placa}");
+                Console.WriteLine(" ");
+                Console.WriteLine("ERRO! \n Essa placa já foi cadastrada no Sistema! \n Verifique a placa e tente novamente.");
+            }
+            else
+            {
+                var veiculo = new Veiculo
+                {
+                    Placa = placa,
+                    Marca = marca,
+                    Modelo = modelo,
+                    Cor = cor,
+                    HoraEntrada = DateTime.Now
+                };
+                veiculos.Add(veiculo);
+                Console.WriteLine(" ");
+                Console.WriteLine($"Veículo cadastrado às {veiculo.HoraEntrada}: \n Marca: {marca} \n Modelo: {modelo} \n Cor: {cor} \n Placa: {placa}");
+            }
         }
 
         public void RemoverVeiculo(string placa)
@@ -65,12 +73,15 @@ namespace SistemaParaEstacionamento.Models
                     Console.WriteLine($"Tempo de permanência: {horasMinutos} min");
                 }
 
-                // Console.WriteLine($"Tempo de permanência {duracao.TotalHours:F2}min.");
+                Console.WriteLine(" ");
+                Console.WriteLine($"Valor Inicial: R$ {vlrInicial:F2}");
+                Console.WriteLine($"Valor Por Hora: R$ {vlrHora:F2}");
                 Console.WriteLine("--------------------");
-                Console.WriteLine($"Total a pagar: R${total:F2}.");
+                Console.WriteLine($"Total a pagar: R$ {total:F2}.");
             }
             else
             {
+                Console.WriteLine(" ");
                 Console.WriteLine("Veículo Não Encontrado.");
             }
         }
@@ -78,7 +89,7 @@ namespace SistemaParaEstacionamento.Models
         public void ListarVeiculos()
         {
             Console.WriteLine($"Veículos Cadastrados ({veiculos.Count}):");
-            foreach(var veiculo in veiculos)
+            foreach (var veiculo in veiculos)
             {
                 Console.WriteLine($"Marca: {veiculo.Marca} Modelo: {veiculo.Modelo} Cor: {veiculo.Cor} Placa: {veiculo.Placa} - Entrada: {veiculo.HoraEntrada}");
             }
