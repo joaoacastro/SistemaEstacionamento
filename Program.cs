@@ -7,13 +7,8 @@ class Program
     {
         Console.WriteLine("Seja bem-vindx ao sistema de estacionamento JAC PARK");
 
-        Console.WriteLine("Digite o preço inicial");
-        Console.Write("R$ ");
-        decimal valorInicial = Convert.ToDecimal(Console.ReadLine()?.Replace('.', ',') ?? "0");
-
-        Console.WriteLine("Agora digite o valor por hora");
-        Console.Write("R$ ");
-        decimal valorHora = Convert.ToDecimal(Console.ReadLine()?.Replace('.', ',') ?? "0");
+        decimal valorInicial = Estacionamento.LerDecimal("Digite o preço inicial (R$): ");
+        decimal valorHora = Estacionamento.LerDecimal("Digite o preço inicial (R$): ");
 
         var estacionamento = new Estacionamento(valorInicial, valorHora);
 
@@ -43,7 +38,9 @@ class Program
                         // Verifique se a placa é nula ou vazia antes de chamar o método VerificarPlaca
                         if (string.IsNullOrWhiteSpace(placa))
                         {
+                            Console.WriteLine(" ");
                             Console.WriteLine("Placa não pode ser nula ou vazia. Tente novamente.");
+                            Console.WriteLine(" ");
                         }
                         else
                         {
@@ -72,6 +69,7 @@ class Program
                                 {
                                     Console.WriteLine(" ");
                                     Console.WriteLine("Cadastro não efetuado! Por favor, revise as informações e tente novamente.");
+                                    Console.WriteLine(" ");
                                 }
                             }
                         }
@@ -91,6 +89,7 @@ class Program
                         {
                             Console.WriteLine(" ");
                             Console.WriteLine("Por favor, insira uma placa válida.");
+                            Console.WriteLine(" ");
                         }
                         break;
 
@@ -106,7 +105,9 @@ class Program
                         break;
 
                     default:
+                        Console.WriteLine(" ");
                         Console.WriteLine("Opção inválida.");
+                        Console.WriteLine(" ");
                         break;
                 }
             }

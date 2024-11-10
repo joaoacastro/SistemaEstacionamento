@@ -18,6 +18,25 @@ namespace SistemaParaEstacionamento.Models
             vlrHora = valorHora;
         }
 
+        public static decimal LerDecimal(string mensagem)
+        {
+            decimal valor;
+            while (true)
+            {
+                Console.Write(mensagem);
+                if (decimal.TryParse(Console.ReadLine()?.Replace('.',','), out valor))
+                {
+                    return valor;
+                }
+                else
+                {
+                    Console.WriteLine(" ");
+                    Console.WriteLine("ERRO! \n Por favor, insira um valor decimal válido.");
+                    Console.WriteLine(" ");
+                }
+            }
+        }
+
         private class Veiculo
         {
             public string Placa { get; set; } = "###-####";
@@ -34,18 +53,21 @@ namespace SistemaParaEstacionamento.Models
             {
                 Console.WriteLine(" ");
                 Console.WriteLine("ERRO! \n Essa placa já foi cadastrada no Sistema. \n Verifique a placa e tente novamente.");
+                Console.WriteLine(" ");
                 return false;
             }
-            else if (placa.Length >= 8)
+            if (FormatarPlaca(placa).Length > 8)
             {
                 Console.WriteLine(" ");
                 Console.WriteLine("ERRO! \n O número de caracteres excede o limite permitido. \n Verifique a placa e tente novamente.");
+                Console.WriteLine(" ");
                 return false;
             }
-            else if (placa.Length <= 7)
+            if (FormatarPlaca(placa).Length < 8)
             {
                 Console.WriteLine(" ");
                 Console.WriteLine("ERRO! \n O número de caracteres é inferior ao limite permitido. \n Verifique a placa e tente novamente.");
+                Console.WriteLine(" ");
                 return false;
             }
             return true;
@@ -63,32 +85,20 @@ namespace SistemaParaEstacionamento.Models
 
         public void CadastrarVeiculo(string placa, string marca, string modelo, string cor)
         {
-            // if (veiculos.Any(v => v.Placa == placa))
-            // {
-            //     Console.WriteLine(" ");
-            //     Console.WriteLine("ERRO! \n Essa placa já foi cadastrada no Sistema. \n Verifique a placa e tente novamente.");
-            // }
-            // else if (placa.Length >= 8)
-            // {
-            //     Console.WriteLine(" ");
-            //     Console.WriteLine("ERRO! \n O número de caracteres excede o limite permitido. \n Verifique a placa e tente novamente.");
-            // }
-            // else
-            // {
-                var veiculo = new Veiculo
-                {
-                    Placa = placa,
-                    Marca = marca,
-                    Modelo = modelo,
-                    Cor = cor,
-                    HoraEntrada = DateTime.Now
-                };
-                veiculos.Add(veiculo);
+            var veiculo = new Veiculo
+            {
+                Placa = placa,
+                Marca = marca,
+                Modelo = modelo,
+                Cor = cor,
+                HoraEntrada = DateTime.Now
+            };
+            veiculos.Add(veiculo);
 
-                Console.WriteLine(" ");
-                Console.WriteLine($"Veículo cadastrado às {veiculo.HoraEntrada}: \n Marca: {marca} \n Modelo: {modelo} \n Cor: {cor} \n Placa: {FormatarPlaca(placa)}");
-            }
-        // }
+            Console.WriteLine(" ");
+            Console.WriteLine($"Veículo cadastrado às {veiculo.HoraEntrada}: \n Marca: {marca} \n Modelo: {modelo} \n Cor: {cor} \n Placa: {FormatarPlaca(placa)}");
+            Console.WriteLine(" ");
+        }
 
         public void RemoverVeiculo(string placa)
         {
@@ -102,6 +112,7 @@ namespace SistemaParaEstacionamento.Models
 
                 Console.WriteLine(" ");
                 Console.WriteLine($"{veiculo.Marca} {veiculo.Modelo} {veiculo.Cor} | placa: {FormatarPlaca(placa)} removido.");
+                Console.WriteLine(" ");
 
                 if (duracao.TotalHours < 1)
                 {
@@ -124,6 +135,7 @@ namespace SistemaParaEstacionamento.Models
             {
                 Console.WriteLine(" ");
                 Console.WriteLine("Veículo Não Encontrado.");
+                Console.WriteLine(" ");
             }
         }
 
