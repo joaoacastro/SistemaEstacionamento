@@ -32,16 +32,12 @@ namespace SistemaParaEstacionamento.Models
                     }
                     else
                     {
-                        Console.WriteLine(" ");
-                        Console.WriteLine("ERRO! \n Por favor, insira um valor decimal positivo.");
-                        Console.WriteLine(" ");    
+                        Console.WriteLine("\nERRO! \n Por favor, insira um valor decimal positivo.");
                     }
                 }
                 else
                 {
-                    Console.WriteLine(" ");
-                    Console.WriteLine("ERRO! \n Por favor, insira um valor decimal válido.");
-                    Console.WriteLine(" ");
+                    Console.WriteLine("\nERRO! \n Por favor, insira um valor decimal válido.");
                 }
             }
         }
@@ -60,23 +56,17 @@ namespace SistemaParaEstacionamento.Models
         {
             if (veiculos.Any(v => v.Placa == placa))
             {
-                Console.WriteLine(" ");
-                Console.WriteLine("ERRO! \n Essa placa já foi cadastrada no Sistema. \n Verifique a placa e tente novamente.");
-                Console.WriteLine(" ");
+                Console.WriteLine("\nERRO! \n Essa placa já foi cadastrada no Sistema. \n Verifique a placa e tente novamente.");
                 return false;
             }
             if (FormatarPlaca(placa).Length > 8)
             {
-                Console.WriteLine(" ");
-                Console.WriteLine("ERRO! \n O número de caracteres excede o limite permitido. \n Verifique a placa e tente novamente.");
-                Console.WriteLine(" ");
+                Console.WriteLine("\nERRO! \n O número de caracteres excede o limite permitido. \n Verifique a placa e tente novamente.");
                 return false;
             }
             if (FormatarPlaca(placa).Length < 8)
             {
-                Console.WriteLine(" ");
-                Console.WriteLine("ERRO! \n O número de caracteres é inferior ao limite permitido. \n Verifique a placa e tente novamente.");
-                Console.WriteLine(" ");
+                Console.WriteLine("\nERRO! \n O número de caracteres é inferior ao limite permitido. \n Verifique a placa e tente novamente.");
                 return false;
             }
             return true;
@@ -104,9 +94,7 @@ namespace SistemaParaEstacionamento.Models
             };
             veiculos.Add(veiculo);
 
-            Console.WriteLine(" ");
-            Console.WriteLine($"Veículo cadastrado às {veiculo.HoraEntrada}: \n Marca: {marca} \n Modelo: {modelo} \n Cor: {cor} \n Placa: {FormatarPlaca(placa)}");
-            Console.WriteLine(" ");
+            Console.WriteLine($"\nVeículo cadastrado às {veiculo.HoraEntrada}: \n Marca: {marca} \n Modelo: {modelo} \n Cor: {cor} \n Placa: {FormatarPlaca(placa)}");
         }
 
         public void RemoverVeiculo(string placa)
@@ -119,38 +107,33 @@ namespace SistemaParaEstacionamento.Models
                 decimal total = vlrInicial + (decimal)duracao.TotalHours * vlrHora;
                 veiculos.Remove(veiculo);
 
-                Console.WriteLine(" ");
-                Console.WriteLine($"{veiculo.Marca} {veiculo.Modelo} {veiculo.Cor} | placa: {FormatarPlaca(placa)} removido.");
-                Console.WriteLine(" ");
+                Console.WriteLine($"\n{veiculo.Marca} {veiculo.Modelo} {veiculo.Cor} | placa: {FormatarPlaca(placa)} removido.");
 
                 if (duracao.TotalHours < 1)
                 {
                     string minutosAjustado = $"{(int)duracao.TotalMinutes}m{duracao.Seconds:D2}";
-                    Console.WriteLine($"Tempo de permanência: {minutosAjustado} seg");
+                    Console.WriteLine($"\nTempo de permanência: {minutosAjustado} seg");
                 }
                 else
                 {
                     string horasMinutos = $"{(int)duracao.TotalHours}h{duracao.Minutes:D2}";
-                    Console.WriteLine($"Tempo de permanência: {horasMinutos} min");
+                    Console.WriteLine($"\nTempo de permanência: {horasMinutos} min");
                 }
 
-                Console.WriteLine(" ");
-                Console.WriteLine($"Valor Inicial: R$ {vlrInicial:F2}");
+                Console.WriteLine($"\nValor Inicial: R$ {vlrInicial:F2}");
                 Console.WriteLine($"Valor Por Hora: R$ {vlrHora:F2}");
                 Console.WriteLine("--------------------");
                 Console.WriteLine($"Total a pagar: R$ {total:F2}.");
             }
             else
             {
-                Console.WriteLine(" ");
-                Console.WriteLine("Veículo Não Encontrado.");
-                Console.WriteLine(" ");
+                Console.WriteLine("\nVeículo Não Encontrado.");
             }
         }
 
         public void ListarVeiculos()
         {
-            Console.WriteLine($"Veículos Cadastrados ({veiculos.Count}):");
+            Console.WriteLine($"\nVeículos Cadastrados ({veiculos.Count}):");
             foreach (var veiculo in veiculos)
             {
                 Console.WriteLine($"Marca: {veiculo.Marca} Modelo: {veiculo.Modelo} Cor: {veiculo.Cor} Placa: {FormatarPlaca(veiculo.Placa)} - Entrada: {veiculo.HoraEntrada}");

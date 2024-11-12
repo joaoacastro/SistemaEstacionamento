@@ -29,8 +29,8 @@ class Program
                 switch (opcao)
                 {
                     case "1":
-                        Console.WriteLine("");
-                        Console.WriteLine(">> 1 - CADASTRO <<");
+                        Console.Clear();
+                        Console.WriteLine("\n>> 1 - CADASTRO <<");
 
                         Console.Write("Digite a placa do veículo (abc1234): ");
                         string? placa = Console.ReadLine()?.ToUpper();
@@ -38,9 +38,7 @@ class Program
                         // Verifique se a placa é nula ou vazia antes de chamar o método VerificarPlaca
                         if (string.IsNullOrWhiteSpace(placa))
                         {
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Placa não pode ser nula ou vazia. Tente novamente.");
-                            Console.WriteLine(" ");
+                            Console.WriteLine("\nERRO! \n Placa não pode ser nula ou vazia. Tente novamente.");
                         }
                         else
                         {
@@ -67,9 +65,7 @@ class Program
                                 }
                                 else
                                 {
-                                    Console.WriteLine(" ");
-                                    Console.WriteLine("Cadastro não efetuado! Por favor, revise as informações e tente novamente.");
-                                    Console.WriteLine(" ");
+                                    Console.WriteLine("\nCadastro não efetuado! Por favor, revise as informações e tente novamente.");
                                 }
                             }
                         }
@@ -77,8 +73,8 @@ class Program
 
 
                     case "2":
-                        Console.WriteLine("");
-                        Console.WriteLine(">> 2 - REMOVER <<");
+                        Console.Clear();
+                        Console.WriteLine("\n>> 2 - REMOVER <<");
                         Console.Write("Digite a placa do veículo que deseja remover (abc1234): ");
                         string? placaRemocao = Console.ReadLine()?.ToUpper();
                         if (!string.IsNullOrWhiteSpace(placaRemocao))
@@ -87,27 +83,32 @@ class Program
                         }
                         else
                         {
-                            Console.WriteLine(" ");
-                            Console.WriteLine("Por favor, insira uma placa válida.");
+                            Console.WriteLine("\nPor favor, insira uma placa válida.");
                             Console.WriteLine(" ");
                         }
+
+                        Console.WriteLine("\nPressione qualquer tecla para continuar...");
+                        Console.ReadKey();
+
                         break;
 
                     case "3":
-                        Console.WriteLine("");
-                        Console.WriteLine(">> 3 - LISTA <<");
+                        Console.Clear();
+                        Console.WriteLine("\n>> 3 - LISTA <<");
                         estacionamento.ListarVeiculos();
+
                         break;
 
                     case "4":
-                        Console.WriteLine("Encerrando programa");
+                        Console.WriteLine("\nEncerrando programa");
+                        Console.WriteLine("\nPressione qualquer tecla para continuar...");
+                        Console.ReadKey();
+
                         exibirMenu = false;
                         break;
 
                     default:
-                        Console.WriteLine(" ");
-                        Console.WriteLine("Opção inválida.");
-                        Console.WriteLine(" ");
+                        Console.WriteLine("\nOpção inválida.");
                         break;
                 }
             }
