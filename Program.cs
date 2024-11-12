@@ -8,7 +8,7 @@ class Program
         Console.WriteLine("Seja bem-vindx ao sistema de estacionamento JAC PARK");
 
         decimal valorInicial = Estacionamento.LerDecimal("Digite o preço inicial (R$): ");
-        decimal valorHora = Estacionamento.LerDecimal("Digite o preço inicial (R$): ");
+        decimal valorHora = Estacionamento.LerDecimal("Digite o valor por hora (R$): ");
 
         var estacionamento = new Estacionamento(valorInicial, valorHora);
 

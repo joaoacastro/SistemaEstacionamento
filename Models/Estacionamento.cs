@@ -26,7 +26,16 @@ namespace SistemaParaEstacionamento.Models
                 Console.Write(mensagem);
                 if (decimal.TryParse(Console.ReadLine()?.Replace('.',','), out valor))
                 {
-                    return valor;
+                    if(valor >0)
+                    {
+                        return valor;
+                    }
+                    else
+                    {
+                        Console.WriteLine(" ");
+                        Console.WriteLine("ERRO! \n Por favor, insira um valor decimal positivo.");
+                        Console.WriteLine(" ");    
+                    }
                 }
                 else
                 {
